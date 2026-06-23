@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK体育 – 产品说明页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f5f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2d2f33;
+      line-height: 1.6;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* hero 卡片 */
+    .hero-card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e8eaed;
+      padding: 48px 40px 40px;
+      margin-bottom: 32px;
+      transition: box-shadow 0.2s;
+    }
+
+    .hero-card:hover {
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #1e2025;
+      margin-bottom: 12px;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: #4a4e57;
+      max-width: 680px;
+      margin-bottom: 20px;
+      border-left: 4px solid #d0d5dd;
+      padding-left: 18px;
+    }
+
+    .hero-summary {
+      font-size: 1rem;
+      color: #3d4048;
+    }
+
+    /* 卡片网格 */
+    .grid-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin: 32px 0;
+    }
+
+    .card-item {
+      background: #ffffff;
+      border: 1px solid #e2e5e9;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      padding: 28px 24px 24px;
+      flex: 1 1 calc(50% - 12px);
+      min-width: 240px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card-item:hover {
+      border-color: #cbd0d6;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    .card-item h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #24262c;
+      letter-spacing: -0.01em;
+    }
+
+    .card-item p {
+      font-size: 0.96rem;
+      color: #3f434b;
+    }
+
+    .card-item .small-detail {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: #6b7078;
+      border-top: 1px solid #edf0f4;
+      padding-top: 12px;
+    }
+
+    /* 使用建议 + 场景区块 */
+    .advice-block {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e4e7eb;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      padding: 36px 32px 32px;
+      margin: 24px 0 32px;
+    }
+
+    .advice-block h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1f2229;
+      margin-bottom: 14px;
+    }
+
+    .advice-block p {
+      margin-bottom: 12px;
+      color: #3b3f48;
+    }
+
+    .advice-block .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 16px 0 8px;
+    }
+
+    .tag-list .tag {
+      background: #f0f2f5;
+      border-radius: 40px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      color: #2d313a;
+      border: 1px solid #dfe2e8;
+      letter-spacing: 0.01em;
+    }
+
+    /* 可信说明 / 提示卡 */
+    .trust-note {
+      background: #fbfcfd;
+      border: 1px solid #dbdfe5;
+      border-radius: 18px;
+      padding: 24px 28px;
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .trust-note .note-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+      opacity: 0.7;
+    }
+
+    .trust-note .note-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .trust-note .note-text p {
+      font-size: 0.95rem;
+      color: #3e434c;
+    }
+
+    .trust-note .note-text p strong {
+      color: #2a2e36;
+    }
+
+    /* FAQ 摘要（紧凑） */
+    .faq-mini {
+      background: #ffffff;
+      border: 1px solid #e3e6eb;
+      border-radius: 20px;
+      padding: 28px 30px 24px;
+      margin: 28px 0 20px;
+    }
+
+    .faq-mini h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #202329;
+      margin-bottom: 18px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #eef0f4;
+      padding: 12px 0;
+    }
+
+    .faq-item:last-of-type {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: #2b2e36;
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      font-size: 0.92rem;
+      color: #4f555f;
+      line-height: 1.5;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      margin-top: 36px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #70757f;
+      border-top: 1px solid #e0e3e8;
+      padding-top: 24px;
+    }
+
+    .footer-note a {
+      color: #2d313a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #b7bcc5;
+      transition: border-color 0.15s;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #2d313a;
+    }
+
+    /* 响应式 */
+    @media (max-width: 680px) {
+      body {
+        padding: 24px 16px;
+      }
+      .hero-card {
+        padding: 32px 22px;
+      }
+      .hero-title {
+        font-size: 1.9rem;
+      }
+      .card-item {
+        flex: 1 1 100%;
+      }
+      .advice-block {
+        padding: 26px 20px;
+      }
+      .trust-note {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .hero-title {
+        font-size: 1.7rem;
+      }
+      .faq-mini {
+        padding: 20px 18px;
+      }
+    }
+
+    /* 额外的柔和分割 */
+    .soft-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #d8dce2, transparent);
+      margin: 16px 0 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero 摘要区域 -->
+  <div class="hero-card">
+    <div class="hero-title">MK体育 · 产品说明</div>
+    <div class="hero-sub">快速识别网站用途，聚焦你真正需要的运动信息</div>
+    <div class="hero-summary">
+      如果你正在找一个能直接了解运动动态、赛事信息或相关内容的网站，<a href="https://site-index-mk.com" style="color:#1f2a40; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; text-decoration-color:#a7b0bd;">MK体育</a> 提供了一种简洁整合的方式。它不是一个复杂平台，而是围绕体育内容做了索引与整理，方便你更快找到感兴趣的部分。
+    </div>
+  </div>
+
+  <!-- 亮点卡片：两列 -->
+  <div class="grid-cards">
+    <div class="card-item">
+      <h3>结构清晰</h3>
+      <p>页面分类与入口比较直接，没有过多干扰。你可以依据自己的需求浏览对应的体育版块，节省到处翻找的时间。</p>
+      <div class="small-detail">适合日常快速浏览，也适合做信息收集的起点</div>
+    </div>
+    <div class="card-item">
+      <h3>内容聚焦</h3>
+      <p>围绕体育相关主题组织内容，不堆砌无关信息。如果你对赛事、资讯或数据有需求，可以尝试从这里开始。</p>
+      <div class="small-detail">每一次访问都能直接触及核心分类</div>
+    </div>
+  </div>
+
+  <!-- 使用建议 + 场景 -->
+  <div class="advice-block">
+    <h2>使用建议 &amp; 常见场景</h2>
+    <p>无论你是体育爱好者、信息收集者，还是偶尔想了解运动话题，都可以用 <a href="https://site-index-mk.com" style="color:#1f2a40; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; text-decoration-color:#a7b0bd;">MK体育</a> 作为你的起点索引。下面是一些常见的用法：</p>
+    <div class="tag-list">
+      <span class="tag">⚽ 快速查看赛事分类</span>
+      <span class="tag">🏀 获取相关体育链接</span>
+      <span class="tag">📋 对比不同运动信息</span>
+      <span class="tag">🔍 探索体育内容索引</span>
+    </div>
+    <p style="margin-top:18px;">比如你周末想看看有没有足球方面的内容汇总，或者想了解某项运动的近期动态，都可以打开网站，根据分类进入相应页面。不需要注册或复杂操作，直接浏览即可。</p>
+  </div>
+
+  <!-- 可信但克制的说明 -->
+  <div class="trust-note">
+    <div class="note-icon">📌</div>
+    <div class="note-text">
+      <p><strong>可信但克制的说明：</strong> 本页面仅做产品功能与特点的介绍。网站本身不提供任何形式的投注、博彩、非法赌博或违反法律法规的服务。所有体育内容均以信息索引和展示为目的，请根据个人情况合理使用。如果你不确定网站是否适合自己，可以先浏览首页内容再做判断。</p>
+      <p style="margin-top:10px;">使用过程中如果遇到任何疑问，建议通过网站提供的联系方式进行反馈。理性、有节制地获取信息，才是最好的使用方式。</p>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h2>FAQ 摘要 – 对 MK体育 的常见疑问</h2>
+    <div class="faq-item">
+      <div class="faq-q">这个网站主要是做什么的？</div>
+      <div class="faq-a"><a href="https://site-index-mk.com" style="color:#1f2a40; text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:0.5px; text-decoration-color:#a7b0bd;">MK体育</a> 是一个体育类内容索引站点，将相关运动信息、分类入口进行了整理，方便用户快速定位感兴趣的部分，而不是在大量页面中到处寻找。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">我是否需要注册或付费才能使用？</div>
+      <div class="faq-a">不需要。网站的内容浏览是公开的，直接打开主页就可以看到分类和链接。没有强制注册或隐藏付费要求。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">网站包含赌博、博彩内容吗？</div>
+      <div class="faq-a">不包含。本网站只聚焦体育信息索引与展示，不涉及任何形式的博彩、赌球、投注或违法违规内容。请放心浏览。</div>
+    </div>
+  </div>
+
+  <!-- 页脚 + 链接嵌入 -->
+  <div class="footer-note">
+    <p>此页面为独立产品说明页，与 <a href="https://site-index-mk.com">MK体育</a> 关联。所有描述基于网站实际功能，无夸大或诱导表述。</p>
+    <p style="margin-top:6px;">© 2025 · 内容仅供参考，请理性使用</p>
+  </div>
+
+</div>
+</body>
+</html>
